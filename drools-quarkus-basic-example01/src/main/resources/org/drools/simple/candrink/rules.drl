@@ -1,0 +1,18 @@
+package org.drools.simple.candrink
+
+import org.kie.kogito.quickstart.Person;
+import org.kie.kogito.quickstart.Result;
+
+rule "Can drink" when
+  $r : Result()
+  Person( age >= 18, $name : name )
+then
+  $r.setValue( $name + " can drink" );
+end
+
+rule "Can not drink" when
+  $r : Result()
+  Person( age < 18, $name : name )
+then
+  $r.setValue( $name + " can NOT drink" );
+end
